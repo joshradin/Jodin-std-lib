@@ -98,7 +98,9 @@ implement FileReader {
 	}
 
 	char readChar() {
-		while(!this->f->ready());
+		if(!this->f->ready()) {
+			return (char) 0;
+		}
 		return this->f->read();
 	}
 
@@ -116,7 +118,7 @@ implement FileReader {
 		bool lineBreakFound = false;
 		while(!lineBreakFound) {
 			char c = this->readChar();
-			if(c == '\n') {
+			if(c == '\n' || c == 0) {
 				lineBreakFound = true;
 			} else {
 				output = output->concat(c);
@@ -151,4 +153,15 @@ implement FileReader {
 	}
 
 
+}
+
+in std
+implement ContinuousReader {
+
+	ContinuousReader(FILE f) : super(f) {}
+
+	char readChar() {
+		while(!this->f->ready());
+		return this->f->read();
+	}
 }

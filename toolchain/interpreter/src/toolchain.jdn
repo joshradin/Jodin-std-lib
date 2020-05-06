@@ -12,12 +12,12 @@ class InterpreterFile : std::File {
 	private u16 fd;
 	private std::String path;
 
-	public InterpreterFile(std::String path) {
+	public InterpreterFile(std::String path, bool read, bool write, bool append) {
 		this->fd = _open_file(path);
 		this->path = path;
 	}
 
-	public InterpreterFile(int fd) {
+	public InterpreterFile(int fd, bool read, bool write, bool append) {
 		this->fd = fd;
 	}
 
@@ -50,16 +50,56 @@ class InterpreterFile : std::File {
 		}
 	}
 
+	virtual public std::String toString() {
+		return this->path;
+	}
+
 };
 
-in std File access_file(std::String file) {
-	return new InterpreterFile(file);
+in std File access_file(std::String file, std::String options) {
+	bool read = false, write = false, append = false;
+	// read = write = append = false;
+	int length = options->length();
+	const char* cString = options->getCStr();
+	if(length == 0) {
+		PANIC("Accessing a file must have options");
+	}
+	for(int i = 0; i < length; ++i) {
+		char op = cString[i];
+		if(op == 'w') {
+			write = true;
+		} else if (op == 'r') {
+			read = true;
+		} else if (op == 'a') {
+			append = true;
+		} else {
+			PANIC(("file option must be a w, r, or a"));
+		}
+	}
+
+	return new InterpreterFile(file, read, write, append);
 }
 
-in std File access_fd(int fd) {
-	return new InterpreterFile(fd);
-}
+in std File access_fd(int fd, std::String options) {
+	bool read, write, append;
+	read = write = append = false;
+	int length = options->length();
+	const char* cString = options->getCStr();
+	if(length == 0) {
+		PANIC("Accessing a file must have options");
+	}
+	for(int i = 0; i < length; ++i) {
+		char op = cString[i];
+		if(op == 'w') {
+			write = true;
+		} else if (op == 'r') {
+			read = true;
+		} else if (op == 'a') {
+			append = true;
+		} else {
+			PANIC(("file option must be a w, r, or a"));
+		}
+	}
 
-in std File access_fd(int fd) {
-	return new InterpreterFile(fd);
+	return new InterpreterFile(fd, read, write, append);
 }

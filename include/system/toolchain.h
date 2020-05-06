@@ -47,8 +47,8 @@ class File {
 	virtual public void write(char c);
 };
 
-File access_file(std::String file);
-File access_fd(int fd);
+File access_file(std::String file, std::String options);
+File access_fd(int fd, std::String options);
 
 // Device management
 
