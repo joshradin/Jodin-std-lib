@@ -1,6 +1,6 @@
 #include <system/toolchain.h>
 #include <host_hook.h>
-
+#include <host_hook.h>
 
 void print(const char* c) {
 	_interpreter_print(c);
@@ -9,7 +9,7 @@ void print(const char* c) {
 
 
 class InterpreterFile : std::File {
-	private int fd;
+	private u16 fd;
 	private std::String path;
 	private int position;
 
@@ -18,6 +18,9 @@ class InterpreterFile : std::File {
 		this->path = path;
 	}
 
+	public InterpreterFile(int fd) {
+		this->fd = fd;
+	}
 
 
 	virtual public void flush() {
@@ -30,13 +33,16 @@ class InterpreterFile : std::File {
 		bool error;
 		char output = _read_file(this->fd, this->position++, &error);
 		if(error) {
-			panic(new std::String("Error reading from file"));
+			PANIC("Error reading from file");
+			// panic(new std::String("Error reading from file"));
 		}
 		return output;
 	}
 	virtual public void write(char c) {
-		if(!_write_file(this->fd)) {
-			panic(new std::String("Error writing to file"));
+
+		u16 fd = this->fd;
+		if(!_write_file(fd, c)) {
+			PANIC(new std::String("Error writing to file"));
 		}
 	}
 	virtual public void change_position(size_t position) {
@@ -46,4 +52,8 @@ class InterpreterFile : std::File {
 
 in std File access_file(std::String file) {
 	return new InterpreterFile(file);
+}
+
+in std File access_fd(int fd) {
+	return new InterpreterFile(fd);
 }
