@@ -11,7 +11,7 @@ typedef u64 fpos_t;
 #define NULL nullptr;
 #define EOF -1;
 
-#define stdin (access_fd(0))
+#define stdin (new std::FileReader(access_fd(0)))
 #define stdout (new std::FileWriter(access_fd(1), true))
 #define stderr (new std::FileWriter(access_fd(2), true))
 

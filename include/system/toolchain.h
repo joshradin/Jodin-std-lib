@@ -45,7 +45,6 @@ class File {
 	virtual public char read();
 	virtual public bool ready();
 	virtual public void write(char c);
-	virtual public void change_position(size_t position);
 };
 
 File access_file(std::String file);

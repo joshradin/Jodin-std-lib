@@ -81,9 +81,7 @@ implement FileReader {
 	}
 
 	bool safe_read(u8* c) {
-		if (!this->f->ready()) {
-			return false;
-		}
+		while(!this->f->ready());
 		*c = this->f->read();
 		return true;
 	}
@@ -91,7 +89,7 @@ implement FileReader {
 	bool read(u8 buffer[], int len) {
 		for(int i =0; i < len; ++i) {
 			u8 nextByte;
-			if(!safe_read(&nextByte)) {
+			if(!this->safe_read(&nextByte)) {
 				return false;
 			}
 			buffer[i] = nextByte;
@@ -100,6 +98,7 @@ implement FileReader {
 	}
 
 	char readChar() {
+		while(!this->f->ready());
 		return this->f->read();
 	}
 
@@ -115,7 +114,7 @@ implement FileReader {
 	String readLine() {
 		String output = new String();
 		bool lineBreakFound = false;
-		while(this->f->ready() && !lineBreakFound) {
+		while(!lineBreakFound) {
 			char c = this->readChar();
 			if(c == '\n') {
 				lineBreakFound = true;
@@ -129,7 +128,7 @@ implement FileReader {
 	String readToken() {
 		String output = new String();
 		bool charFound = false;
-		while(this->f->ready() && !charFound) {
+		while(!charFound) {
 			char c = this->readChar();
 			if (!(c == ' ' || c == '\r' || c == '\n' || c == '\t')) {
 				charFound = true;
@@ -139,7 +138,7 @@ implement FileReader {
 
 
 		bool whitespaceFound = false;
-		while(this->f->ready() && !whitespaceFound) {
+		while(!whitespaceFound) {
 			char c = this->readChar();
 			if ((c == ' ' || c == '\r' || c == '\n' || c == '\t')) {
 				whitespaceFound = true;
