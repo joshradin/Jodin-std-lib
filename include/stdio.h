@@ -25,29 +25,29 @@ FILE fopen(const char* filename, const char* mode);
 
 
 in std
-class FileWriter {
+class OutputWriter {
+
+	public virtual void writeln();
+
+	public virtual void write(char c);
+	public virtual void writeln(char c);
+
+	public virtual void write(std::String s);
+	public virtual void writeln(std::String s);
+
+	public virtual void write(std::Object o);
+	public virtual void writeln(std::Object o);
+
+	public virtual void flush();
+	public virtual void close();
+
+};
+
+in std
+class FileWriter : OutputWriter {
 	private FILE f;
-	private bool autoFlush;
 
 	public FileWriter(FILE f);
-	public FileWriter(FILE f, bool autoFlush);
-
-	public void writeln();
-
-	public void write(char c);
-	public void writeln(char c);
-
-	public void write(char *c);
-    public void writeln(char *c);
-
-	public void write(std::String s);
-	public void writeln(std::String s);
-
-	public void write(std::Object o);
-	public void writeln(std::Object o);
-
-	public void flush();
-	public void close();
 
 };
 
