@@ -10,6 +10,7 @@ in std
 class OutputStream : Stream {
 
 	virtual public void write(char c);
+	virtual public void write(char* c);
 	virtual public void write(std::String s);
 	virtual public void write(std::Object o);
 	virtual public void flush();
@@ -21,6 +22,7 @@ class OutputWriter : OutputStream {
 
 	virtual public void writeln();
 	virtual public void writeln(char c);
+	virtual public void writeln(char* c);
 	virtual public void writeln(std::String s);
 	virtual public void writeln(std::Object o);
 

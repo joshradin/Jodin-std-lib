@@ -30,8 +30,10 @@ FILE fopen(const char* filename, const char* mode);
 in std
 class FileWriter : OutputWriter {
 	private FILE f;
+	private bool autoFlush;
 
 	public FileWriter(FILE f);
+	public FileWriter(FILE f, bool autoFlush);
 
 };
 
