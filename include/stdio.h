@@ -40,7 +40,7 @@ class FileReader : InputReader {
 	private FILE f;
 
 	public FileReader(FILE f);
-}
+};
 
 
 
