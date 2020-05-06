@@ -3,6 +3,7 @@
 
 #include <primitives.h>
 #include <system/filesystem.h>
+#include <stream.h>
 
 typedef std::File FILE;
 typedef u64 fpos_t;
@@ -23,24 +24,8 @@ int fflush(FILE stream);
 int fgetpos(FILE stream, fpos_t* pos);
 FILE fopen(const char* filename, const char* mode);
 
-in std
-class OutputWriter {
 
-	public virtual void writeln();
 
-	public virtual void write(char c);
-	public virtual void writeln(char c);
-
-	public virtual void write(std::String s);
-	public virtual void writeln(std::String s);
-
-	public virtual void write(std::Object o);
-	public virtual void writeln(std::Object o);
-
-	public virtual void flush();
-	public virtual void close();
-
-};
 
 in std
 class FileWriter : OutputWriter {
@@ -49,6 +34,14 @@ class FileWriter : OutputWriter {
 	public FileWriter(FILE f);
 
 };
+
+in std
+class FileReader : InputReader {
+	private FILE f;
+
+	public FileReader(FILE f);
+}
+
 
 
 #endif

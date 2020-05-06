@@ -47,3 +47,92 @@ implement FileWriter {
 		this->f->close();
 	}
 }
+
+in std
+implement FileReader {
+
+	FileReader(FILE f) {
+		this->f = f;
+	}
+
+	void close() {
+		this->f->close();
+	}
+
+	u8 read() {
+		return (u8) this->f->read();
+	}
+
+	bool safe_read(u8* c) {
+		if (!this->f->ready()) {
+			return false;
+		}
+		*c = this->f->read();
+		return true;
+	}
+
+	bool read(u8 buffer[], int len) {
+		for(int i =0; i < len; ++i) {
+			u8 nextByte;
+			if(!safe_read(&u8)) {
+				return false;
+			}
+			buffer[i] = nextByte;
+		}
+		return true;
+	}
+
+	char readChar() {
+		return this->f->read();
+	}
+
+	String readString(int len) {
+		char image[len + 1];
+		image[len] = '0';
+		for(int i =0; i < len; ++i) {
+			image[i] = this->readChar();
+		}
+		return new String(image);
+	}
+
+	String readLine() {
+		String output = new String();
+		bool lineBreakFound = false;
+		while(this->f->ready() && !lineBreakFound) {
+			char c = this->readChar();
+			if(c == '\n') {
+				lineBreakFound = true;
+			} else {
+				output = output->concat(c);
+			}
+		}
+		return output;
+	}
+
+	String readToken() {
+		String output = new String();
+		bool charFound = false;
+		while(this->f->ready() && !charFound) {
+			char c = this->readChar();
+			if (!(c == ' ' || c == '\r' || c == '\n' || c == '\t')) {
+				charFound = true;
+				output = output->concat(c);
+			}
+		}
+
+
+		bool whitespaceFound = false;
+		while(this->f->ready() && !whitespaceFound) {
+			char c = this->readChar();
+			if ((c == ' ' || c == '\r' || c == '\n' || c == '\t')) {
+				whitespaceFound = true;
+			} else {
+				output = output->concat(c);
+			}
+		}
+
+		return output;
+	}
+
+
+}

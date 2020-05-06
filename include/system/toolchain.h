@@ -43,6 +43,7 @@ class File {
 	virtual public void flush();
 	virtual public void close();
 	virtual public char read();
+	virtual public bool ready();
 	virtual public void write(char c);
 	virtual public void change_position(size_t position);
 };
