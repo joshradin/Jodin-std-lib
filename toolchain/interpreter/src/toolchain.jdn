@@ -57,3 +57,7 @@ in std File access_file(std::String file) {
 in std File access_fd(int fd) {
 	return new InterpreterFile(fd);
 }
+
+in std File access_fd(int fd) {
+	return new InterpreterFile(fd);
+}
