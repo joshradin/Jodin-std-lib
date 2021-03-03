@@ -49,9 +49,9 @@ class FileWriter : OutputWriter {
 
 in std
 class FileReader : InputReader {
-	FILE f;
+	private FILE f;
 
-	public FileReader(FILE f)
+	public FileReader(FILE f);
 
 	public void close();
 	public u8 read();
