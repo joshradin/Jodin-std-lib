@@ -32,6 +32,7 @@ class FileWriter : OutputWriter {
 	public FileWriter(FILE f);
 	public FileWriter(FILE f, bool autoFlush);
 
+/*
 	public void writeln();
 	public void write(char c);
 	public void writeln(char c);
@@ -44,15 +45,16 @@ class FileWriter : OutputWriter {
 
 	public void flush();
 	public void close();
+*/
 
 };
 
 in std
 class FileReader : InputReader {
-	private FILE f;
+	FILE f;
 
 	public FileReader(FILE f);
-
+/*
 	public void close();
 	public u8 read();
 
@@ -67,6 +69,7 @@ class FileReader : InputReader {
 	public String readLine();
 
 	public String readToken();
+*/
 };
 
 in std
