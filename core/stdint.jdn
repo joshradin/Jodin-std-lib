@@ -19,7 +19,7 @@ implement Int {
 		if(this->value < 0) return new std::String('-')->concat(this->abs()->toString());
 		int last = this->value % 10;
 		Int tail = new Int(last);
-		int first = this->value / 10;
+		int first = this->value / 10.0;
 		if(first > 0) {
 			Int head = new Int(first);
 			return head->toString()->concat(tail);

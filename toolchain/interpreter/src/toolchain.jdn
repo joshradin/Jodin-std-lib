@@ -13,7 +13,11 @@ class InterpreterFile : std::File {
 	private std::String path;
 
 	public InterpreterFile(std::String path, bool read, bool write, bool append) {
-		this->fd = _open_file(path);
+		int error = 0;
+		this->fd = _open_file(path, &error);
+		if (error) {
+			exit(-1);
+		}
 		this->path = path;
 	}
 
