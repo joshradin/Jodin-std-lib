@@ -3,7 +3,7 @@
 #ifndef __PANIC__HEADER__
 #define __PANIC__HEADER__
 
-void panic(std::String msg, int line, char* filename);
+void panic(std::String msg, int line, std::String filename);
 
 #ifndef FORCE_STRING
 #define FORCE_STRING(string) (new std::String(string))

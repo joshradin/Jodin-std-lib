@@ -36,10 +36,10 @@ struct j_heap jodin_heap;
 
 
 void assert_failure(const char* file, int linenumber, const char* message) {
-	print(file);
+	print_cstr(file);
 	print(": ");
 	//print()
-	println(message);
+	println_cstr(message);
 }
 
 

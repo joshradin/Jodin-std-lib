@@ -3,19 +3,26 @@
 #include <system/toolchain.h>
 
 
-void println(const char* c) {
+void println_cstr(const char* c) {
 	if(c != nullptr) {
-		print(c);
+		print_cstr(c);
 	}
 	print("\n");
 }
-void print_s(std::String o) {
-	print(o->getCStr());
+void print(std::String o) {
+	print_cstr(o->getCStr());
 }
-void println_s(std::String o) {
-	println(o->getCStr());
+void println(std::String o) {
+	println_cstr(o->getCStr());
 }
 
+void print_s(std::String o) {
+	print(o);
+}
+
+void println_s(std::String o) {
+	println(o);
+}
 
 
 in std {

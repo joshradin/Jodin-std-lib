@@ -2,7 +2,7 @@
 #include <host_hook.h>
 #include <host_hook.h>
 
-void print(const char* c) {
+void print_cstr(const char* c) {
 	_interpreter_print(c);
 }
 

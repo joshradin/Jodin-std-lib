@@ -16,8 +16,10 @@ void free(void* ptr);
 void exit(int status);
 
 
-void print(const char* c);
-void println(const char* c);
+void print_cstr(const char* c);
+void println_cstr(const char* c);
+void print(std::String o);
+void println(std::String o);
 void print_s(std::String o);
 void println_s(std::String o);
 

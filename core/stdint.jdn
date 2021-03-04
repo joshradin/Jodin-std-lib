@@ -42,4 +42,46 @@ implement Int {
    	}
 
 }
+
+implement Long {
+
+	Long(long value) {
+		this->value = value;
+	}
+
+	long getValue() {
+		return this->value;
+	}
+
+	void setValue(long value) {
+		this->value = value;
+	}
+
+	std::String toString() {
+		if(this->value < 0) return new std::String('-')->concat(this->abs()->toString());
+		long last = this->value % 10;
+		Long tail = new Long(last);
+		long first = this->value / 10.0;
+		if(first > 0) {
+			Long head = new Long(first);
+			return head->toString()->concat(tail);
+		} else {
+			return new std::String()->concat((char) ('0' + tail->getValue()));
+		}
+
+
+	}
+
+	Long abs() {
+		if (this->value >= 0) return this;
+		return new Long(this->value * -1);
+	}
+
+   	Long pow(int exp) {
+		if(exp < 0) return new Long(0);
+		if(exp == 0) return new Long(1);
+		return new Long(this->value * this->pow(exp - 1)->value);
+   	}
+
+}
 }

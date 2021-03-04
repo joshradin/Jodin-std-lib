@@ -52,13 +52,18 @@ implement String {
 		return new String(next);
 	}
 
+	String concat_integer(long other) {
+		Long l = new Long(other);
+		return this->concat(l);
+	}
+
 	const char* getCStr() {
 		return this->backingPtr;
 	}
 
-	String concat_integer(long other) {
-		return this;
-	}
+
+
+
 
 	int length() {
 		return this->length;
