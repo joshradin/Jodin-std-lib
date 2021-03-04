@@ -95,9 +95,13 @@ in std {
 
 		public const char* getCStr();
 
+		public char getChar(int index);
+
 		virtual public int length();
 
 		virtual public String toString();
+
+
     };
 
 

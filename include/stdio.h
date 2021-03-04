@@ -11,9 +11,9 @@ typedef u64 fpos_t;
 #define NULL nullptr;
 #define EOF -1;
 
-#define stdin (new std::ContinuousReader(access_fd(0)))
-#define stdout (new std::FileWriter(access_fd(1), true))
-#define stderr (new std::FileWriter(access_fd(2), true))
+#define stdin (new std::ContinuousReader(access_fd(0, new std::String("r"))))
+#define stdout (new std::FileWriter(access_fd(1, new std::String("w")), true))
+#define stderr (new std::FileWriter(access_fd(2, new std::String("w")), true))
 
 int fclose(FILE stream);
 int clearerr(FILE stream);

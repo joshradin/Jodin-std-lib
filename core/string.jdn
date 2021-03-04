@@ -67,6 +67,10 @@ implement String {
 	String toString() {
 		return this;
 	}
+
+	char getChar(int index) {
+		return (char) this->backingPtr[index];
+	}
 }
 
 char* strdup(const char* str1) {
