@@ -18,8 +18,7 @@ This file is compiled with special rules, significantly that words starting with
 #include <stdio.h>
 
 typedef unsigned char byte;
-
-
+using std;
 
 struct j_heap{
 	byte* jheap;
