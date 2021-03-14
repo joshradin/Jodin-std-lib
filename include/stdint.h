@@ -12,7 +12,7 @@ in std {
 
 		public void setValue(int value);
 
-		virtual public std::String toString();
+		//virtual public std::String toString();
 
 		public Int abs();
 
@@ -29,11 +29,27 @@ in std {
 
 		public void setValue(long value);
 
-		virtual public std::String toString();
+		//virtual public std::String toString();
 
 		public Long abs();
 
 		public Long pow(int exp);
+	};
+
+	class BigInt {
+			private boolean negative;
+			private u8 digits[];
+			private usize digit_count;
+
+			public BigInt(isize base);
+			public BigInt(usize base);
+
+			public BigInt add(BigInt other);
+			public BigInt subtract(BigInt other);
+			public BigInt mult(BigInt other);
+			public BigInt divide(BigInt other);
+			public BigInt remainder(BigInt other);
+
 	};
 
 }
