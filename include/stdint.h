@@ -38,11 +38,11 @@ in std {
 
 	class BigInt {
 			private boolean negative;
-			private u8 digits[];
-			private usize digit_count;
+			private u8* digits;
+			private u32 digit_count;
 
-			public BigInt(isize base);
-			public BigInt(usize base);
+			public BigInt(i64 base);
+
 
 			public BigInt add(BigInt other);
 			public BigInt subtract(BigInt other);
