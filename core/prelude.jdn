@@ -57,7 +57,7 @@ in std {
 		}
         void println() {
         	this->print();
-        	println(nullptr);
+        	println_cstr(("\n")->getCStr());
         }
 	}
 
