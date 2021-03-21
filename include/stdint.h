@@ -12,7 +12,7 @@ in std {
 
 		public void setValue(int value);
 
-		//virtual public std::String toString();
+		virtual public std::String toString();
 
 		public Int abs();
 
@@ -29,7 +29,7 @@ in std {
 
 		public void setValue(long value);
 
-		//virtual public std::String toString();
+		virtual public std::String toString();
 
 		public Long abs();
 

@@ -61,12 +61,15 @@ u64 time();
 // Communication management
 void print_cstr(char* str);
 
-// Jodin stuff
 
-int get_hashcode_for(std::Object o);
+
+
 
 
 }
+
+// Jodin stuff
+int get_hashcode_for(std::Object o);
 
 void breakpoint();
 

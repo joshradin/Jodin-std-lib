@@ -31,7 +31,7 @@ struct j_heap{
 
 struct j_heap jodin_heap;
 
-
+bool reflection_available = false;
 
 
 void assert_failure(const char* file, int linenumber, const char* message) {

@@ -40,8 +40,8 @@ in std {
 		}
 
 		String toString() {
-			return new String("instance");
-			// return this->getClass()->getName()->concat("@")->concat(this->hashcode());
+			//return new String("instance");
+			return this->getClass()->getName()->concat("@")->concat_integer(this->hashcode());
 		}
 
 		void drop() {
