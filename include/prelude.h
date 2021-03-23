@@ -71,6 +71,8 @@ in std {
 
 		virtual public bool equals(Object other);
 		virtual public bool equals(ClassInfo other);
+
+		virtual public std::String toString();
 	};
 
 	class String{
