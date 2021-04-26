@@ -3,6 +3,7 @@
 
 #include <reflection.h>
 #include <primitives.h>
+#include <panic.h>
 
 
 in std class String;
@@ -108,12 +109,10 @@ in std {
 
     };
 
+    String format(String fmt, void** args);
 
 }
 
-
-
-#include <panic.h>
 
 
 

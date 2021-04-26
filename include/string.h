@@ -21,6 +21,7 @@ size_t strxfrm ( char * destination, const char * source, size_t num );
 char* strdup (const char* str1);
 size_t strlen ( const char * str );
 
+in std String format(String fmt, void** args);
 
 
 #endif //SANDBOX_STRING_H
