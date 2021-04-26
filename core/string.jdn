@@ -180,6 +180,10 @@ in std String format(String fmt, void** args) {
                 } else if (type == 'l') {
                     i64* l = (i64*) args[arg++];
                     ret = ret->concat_integer(*l);
+                } else if (type == 'o') {
+
+                    String obj = ((Object) args[arg++])->toString();
+                    ret = ret->concat(obj);
                 }
 
             } else {

@@ -3,7 +3,7 @@
 
 #include <reflection.h>
 #include <primitives.h>
-#include <panic.h>
+
 
 
 in std class String;
@@ -114,7 +114,7 @@ in std {
 }
 
 
-
+#include <panic.h>
 
 
 #endif
